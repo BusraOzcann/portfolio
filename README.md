@@ -1,24 +1,7 @@
-# portfolio-website
+# KİŞİSEL WEB SİTEM
+## KULLANILAN TASARIM
+- https://www.free-css.com/free-css-templates/page270/marvel
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## DİĞER ÜCRETSİZ TASARIMLAR
+- https://preview.colorlib.com/#elen
+- https://www.free-css.com/free-css-templates/page250/oak
