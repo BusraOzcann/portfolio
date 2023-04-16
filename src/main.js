@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+//bootstrap
+import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/js/bootstrap.js"
+
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -10,6 +14,9 @@ const vuetify = createVuetify({
     components,
     directives,
 })
+
+import '@mdi/font/css/materialdesignicons.css'
+
 
 // Router
 import router from "./route/index"

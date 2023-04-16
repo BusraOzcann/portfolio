@@ -1,12 +1,30 @@
 @import "./_variables.scss";
 
-body{
+body, *{
     margin: 0;
     padding: 0;
+}
+
+body{
     box-sizing: border-box;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: $text-color;
-    font-size: $font-size
+    
+    // color: $text-color;
+    // font-size: $font-size
+}
+
+#app{
+    height: 100vh;
+}
+
+#app[data-theme='light']{
+    background-color: $background-light !important;
+    color: $text-color-light !important;
+}
+
+#app[data-theme='dark']{
+    background-color: $background-dark !important;
+    color: $text-color-dark !important;
 }

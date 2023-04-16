@@ -1,34 +1,37 @@
 <template>
-  <div>
-      <div  style="background: pink; width: 100%; height: 200px; display: flex;">
-        <div>
-          <v-btn to="/">
-            HEADER
-          </v-btn>
-        </div>
-        <div>
-          <v-btn to="/about">
-            ABOUT ME
-          </v-btn>
-        </div>
-        <div>
-          <v-btn to="/projects">
-            PROJECTS
-          </v-btn>
-        </div>
-      </div>
+  <div class="container-lg" >
+      
 
-      <div style="width: 100%; heigth: 300px">
+      <div style="width: 100%; heigth: 300px;">
+        <Header></Header>
         <router-view></router-view>
       </div>
   </div>
 </template>
 
 <script>
+import Header from "./components/Header"
+
+import {ref, onMounted} from "vue"
+
 export default {
   name: 'App',
-  components: {
+  setup(){
+    components: {Header}
 
+    onMounted(() => {
+      if(localStorage.getItem("theme")){
+        let app = document.getElementById("app")
+        let currentTheme = localStorage.getItem("theme")
+        if (currentTheme == 'light') app.setAttribute('data-color', 'light');
+        else if (currentTheme == 'dark') app.setAttribute('data-color', 'dark')
+      } else{
+        localStorage.setItem('theme', 'light')
+      }
+    })
+
+    
+    return {Header}
   }
 }
 </script>
@@ -39,4 +42,5 @@ export default {
 #app {
   
 }
+
 </style>
