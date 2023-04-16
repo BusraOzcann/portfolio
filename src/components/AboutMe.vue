@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <img :src="image1" alt="">
+    <div id="aboutme" class="py-5">
+        <div style="margin-top: 70px">
+            <img :src="image1" alt="">
+        
+        </div>
 
     </div>
 </template>

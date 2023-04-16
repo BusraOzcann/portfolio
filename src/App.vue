@@ -1,37 +1,52 @@
 <template>
-  <div class="container-lg" >
-      
+  <div class="container" :class="{ scrolled: isScrolled }" id="aboutme">
 
-      <div style="width: 100%; heigth: 300px;">
-        <Header></Header>
-        <router-view></router-view>
-      </div>
+    <Header />
+
+    <div>
+      <AboutMe />
+      <Projects />
+      <Experience />
+      <Contact />
+    </div>
+
+
   </div>
 </template>
 
 <script>
 import Header from "./components/Header"
+import AboutMe from "./components/AboutMe"
+import Projects from "./components/Projects"
+import Experience from "./components/Experience"
+import Contact from "./components/Contact"
 
 import {ref, onMounted} from "vue"
 
 export default {
   name: 'App',
+  components: { Header, AboutMe, Projects, Experience, Contact },
   setup(){
-    components: {Header}
+    let isScrolled = ref(false);
+    let handleScroll = () => {
+      isScrolled.value = window.scrollY > 0;
+    }
 
     onMounted(() => {
       if(localStorage.getItem("theme")){
-        let app = document.getElementById("app")
-        let currentTheme = localStorage.getItem("theme")
-        if (currentTheme == 'light') app.setAttribute('data-color', 'light');
-        else if (currentTheme == 'dark') app.setAttribute('data-color', 'dark')
+        var app = document.getElementById("app")
+        var currentTheme = localStorage.getItem("theme")
+        if (currentTheme == 'light') app.setAttribute('data-theme', 'light');
+        else if (currentTheme == 'dark') app.setAttribute('data-theme', 'dark')
       } else{
-        localStorage.setItem('theme', 'light')
+        localStorage.setItem('theme', 'dark')
       }
+
+      window.addEventListener("scroll", handleScroll);
     })
 
     
-    return {Header}
+    return {isScrolled, handleScroll}
   }
 }
 </script>
