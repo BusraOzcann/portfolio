@@ -50,7 +50,6 @@ export default {
         components: {  }
 
         let changeTheme = (e) => {
-          console.log("fonk çalıştı")
             let app = document.getElementById("app");
             if(app.getAttribute('data-theme') == 'light') app.setAttribute('data-theme', 'dark')
             else if(app.getAttribute('data-theme') == 'dark') app.setAttribute('data-theme', 'light')
