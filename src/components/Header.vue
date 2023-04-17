@@ -11,10 +11,10 @@
             </v-btn>
         </div>
     </div> -->
-    <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary p-0 px-2 m-0" style="height: 70px;">
+    <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0" style="height: 60px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="../assets/images/star.gif" height="35" alt="" style="border-radius: 50%;">
+            <img src="../assets/images/spaceship.gif" height="35" alt="" style="border-radius: 50%;">
             <span class="ms-3">Büşra Özcan</span>
         </a>
 
@@ -30,14 +30,13 @@
 
           </ul>
 
-
-          <div class="d-flex">
+          <div class="d-flex ms-5">
             <div class="row theme-btn" @click="changeTheme" style="cursor: pointer; width: 150px;">
-              <div class="col-3 d-flex align-items-center " style="font-weight: 800;">
+              <div class="col-3 d-flex align-items-center " style="font-weight: 700;">
                 <i v-if="lightTheme == 'light'" class="mdi mdi-weather-sunny" style="font-size: 20px"></i>
                 <i v-if="lightTheme == 'dark'" class="mdi mdi-weather-night" style="font-size: 20px"></i>
               </div>
-              <div class="col-9 d-flex align-items-center" style="font-weight: 800;">
+              <div class="col-9 d-flex align-items-center" style="font-weight: 700;">
                 {{ lightTheme == 'light' ? 'Açık Mod' : 'Koyu Mod' }}
               </div>
             </div>
@@ -58,14 +57,14 @@ import {ref, onMounted} from "vue"
         let menuItems = ref([
           {title: "Hakkımda", id:"#aboutme"},
           {title: "Projelerim", id:"#projects"},
-          {title: "Eğitim / Deneyim", id:"#experience"},
+          {title: "Süreçlerim", id:"#experience"},
           {title: "İletişim", id:"#contact"}
         ])
         let lightTheme = ref('');
         let selectedMenuId = ref('#aboutme')
 
         onMounted(() => {
-          lightTheme.value = document.getElementById("app").getAttribute('data-theme')
+          lightTheme.value = document.getElementById("app").getAttribute('data-theme');
         })
 
         let changeTheme = (e) => {
@@ -96,16 +95,7 @@ import {ref, onMounted} from "vue"
 <style lang="scss">
 @import "../assets/style/_variables.scss";
 
-  .theme-btn{
-    border-radius: 3px;
-    border: 2px solid;
-    border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
-  }
-  .theme-btn:hover {
-    animation: 5s rotate linear infinite;
-  }
-  
-// light theme start
+// light theme start ---------------------------------------------------------------------
   [data-theme='light'] #nav {
     .navbar-nav .nav-link, .navbar-brand, .navbar-toggler{
       color: $text-color-light !important;
@@ -119,7 +109,6 @@ import {ref, onMounted} from "vue"
         outline: 0;
       }
     }
-
   }
   [data-theme='light'] #nav .nav-item.active .nav-link{
     color: $text-color-light !important
@@ -129,10 +118,11 @@ import {ref, onMounted} from "vue"
       background-color: $background-light !important;
     }
   }
-  // light theme end
+
+  // light theme end  ---------------------------------------------------------------------
 
 
-  // dark theme start
+  // dark theme start  ---------------------------------------------------------------------
   [data-theme='dark'] #nav  {
     .navbar-nav .nav-link, .navbar-brand, .navbar-toggler{
       color: $text-color-dark !important;
@@ -145,7 +135,6 @@ import {ref, onMounted} from "vue"
         outline: 0;
       }
     }
-
   }
 
   [data-theme='dark'] #nav .nav-item.active .nav-link {
@@ -156,8 +145,69 @@ import {ref, onMounted} from "vue"
     .navbar{
       background-color: $background-dark !important;
     }
+
+    
   }
-  //dark theme end
+  //dark theme end  ---------------------------------------------------------------------
+
+  @media screen and (max-width: 760px) {
+    [data-theme='light'] {
+      .navbar-collapse{
+        border: 2px solid;
+        border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
+        z-index: 9999;
+        background-color: $background-light-collapse-nav !important;
+        padding-bottom: 10px;
+        @media(max-width: 100px){
+          border: 0 !important
+        }
+      }
+
+      .navbar{
+        button{
+          color: $text-color-light !important;
+          border: 0 !important;
+          outline: none !important;
+          span{
+            color: $text-color-light !important
+          }
+        }
+        button:focus{
+          outline: none !important;
+        }
+      }
+    }
+
+    [data-theme='dark']{
+      .navbar-collapse{
+        z-index: 9999;
+        background-color: $background-dark-collapse-nav !important;
+        padding-bottom: 10px;
+      }
+
+      .navbar{
+        button{
+          color: $text-color-dark !important;
+          border: 0 !important;
+          outline: none !important;
+          span{
+            color: $text-color-dark !important
+          }
+        }
+        button:focus{
+          outline: none !important;
+        }
+      }
+    }
+  }
+
+  .theme-btn{
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
+  }
+  .theme-btn:hover {
+    animation: 5s rotate linear infinite;
+  }
 
   .navbar li.active {
     border-bottom: 2px solid #ffc10a;
@@ -174,7 +224,5 @@ import {ref, onMounted} from "vue"
     initial-value: 0deg;
     inherits: false;
   }
-
-
 
 </style>

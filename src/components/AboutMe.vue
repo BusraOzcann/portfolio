@@ -1,7 +1,18 @@
 <template>
-    <div id="aboutme" class="py-5">
-        <div style="margin-top: 70px">
-            <img :src="image1" alt="">
+    <div id="aboutme" class="container py-5">
+        <div class="row" style="margin-top: 70px">
+            <div class="col-xs-12 col-lg-6">
+                <p style="font-weight: 700;">
+                    Merhaba, Ben Büşra Özcan. Siteme Hoşgeldiniz 🤗 
+                </p>
+                <p >
+                    Bilgisayar mühendisiyim. İnternet programlama tecrübem var ve kişisel olarak AI ile ilgileniyorum.
+                </p>
+            </div>
+            <div class="col-xs-12 col-lg-6">
+                <!-- <img :src="image1" alt="picture" width="500"> -->
+                dfölmknjdhbfgfdjkl
+            </div>
         
         </div>
 
