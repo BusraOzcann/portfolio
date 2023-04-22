@@ -1,6 +1,6 @@
 <template>
     <div id="experience" class="container py-5" style="height: 500px; ">
-        <div style="">
+        <div style="margin-top: 60px">
             TECRÜBELER
         </div>
     </div>
@@ -13,7 +13,4 @@ export default {
 </script>
 
 <style lang="scss">
-    #experience{
-        padding-top: 70px;
-    }
 </style>

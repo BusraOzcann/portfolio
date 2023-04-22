@@ -1,16 +1,4 @@
 <template>
-    <!-- <div style="background: pink; width: 100%; height: 200px; display: flex;">
-        <div>
-            <v-btn to="/about">
-                ABOUT ME
-            </v-btn>
-        </div>
-        <div>
-            <v-btn to="/projects">
-                PROJECTS
-            </v-btn>
-        </div>
-    </div> -->
     <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0" style="height: 60px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -55,7 +43,7 @@ import {ref, onMounted} from "vue"
         components: {  }
 
         let menuItems = ref([
-          {title: "Hakkımda", id:"#aboutme"},
+          {title: "Hakkımda", id:"#"},
           {title: "Projelerim", id:"#projects"},
           {title: "Süreçlerim", id:"#experience"},
           {title: "İletişim", id:"#contact"}

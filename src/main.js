@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import Vue from "vue"
 import App from './App.vue'
 
 //bootstrap
@@ -15,12 +16,25 @@ const vuetify = createVuetify({
     directives,
 })
 
+// STYLE
 import "animate.css"
-
 import '@mdi/font/css/materialdesignicons.css'
+
+// TOAST
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+const options = {
+    position: 'bottom-right',
+};
+
 
 
 // Router
 import router from "./route/index"
 
-createApp(App).use(router).use(vuetify).mount('#app')
+const app = createApp(App)
+app.use(router)
+app.use(vuetify)
+app.use(Toast, options);
+
+app.mount('#app')

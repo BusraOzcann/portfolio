@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ scrolled: isScrolled }" id="aboutme">
+  <div class="container" :class="{ scrolled: isScrolled }">
 
     <Header />
 
@@ -9,8 +9,7 @@
       <Experience />
       <Contact />
     </div>
-
-
+    
   </div>
 </template>
 
@@ -54,8 +53,6 @@ export default {
 <style lang="scss">
 @import "./assets/style/main.scss";
 
-#app {
-  
-}
+
 
 </style>

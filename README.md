@@ -5,3 +5,6 @@
 #### DİĞER ÜCRETSİZ TASARIMLAR
 - https://preview.colorlib.com/#elen
 - https://www.free-css.com/free-css-templates/page250/oak
+
+
+- vue toast : https://github.com/Maronato/vue-toastification/tree/next

@@ -39,7 +39,7 @@ export default {
     name: "AboutMe",
     setup(){
         const $ = Jquery
-        const image1 = require('../assets/images/image.svg')
+        const image1 = require('../assets/images/girl1.webp')
         var textList = ['Büşra Özcan', 'Bilgisayar Mühendisi 💻', 'Frontend Developer 🖥️']
         var activeTextIndex = 0;
         var activeText = ref(textList[activeTextIndex])
