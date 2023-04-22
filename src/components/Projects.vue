@@ -1,9 +1,8 @@
 <template>
     <div id="projects" class="container py-5" style="height: 500px;">
-        <div style="margin-top: 70px; ">
-            PROJELER
-        </div>
-           
+        <div style="">
+            
+        </div> 
     </div>
 </template>
 
@@ -13,6 +12,8 @@ export default {
 }
 </script>
 
-<style lang="">
-    
+<style lang="scss">
+    #projects{
+        padding-top: 70px
+    }
 </style>

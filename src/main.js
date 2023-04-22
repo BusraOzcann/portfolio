@@ -15,6 +15,8 @@ const vuetify = createVuetify({
     directives,
 })
 
+import "animate.css"
+
 import '@mdi/font/css/materialdesignicons.css'
 
 

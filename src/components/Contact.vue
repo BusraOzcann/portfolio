@@ -1,7 +1,6 @@
 <template>
     <div id="contact" class="container py-5" style="height: 500px; ">
-        <div style="margin-top: 70px;">
-        
+        <div>
             İLETİŞİM
         </div>
     </div>
@@ -11,6 +10,9 @@ export default {
     
 }
 </script>
-<style lang="">
-    
+
+<style lang="scss">
+    #contact{
+        padding-top: 70px
+    }
 </style>
