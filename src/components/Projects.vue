@@ -14,14 +14,22 @@
                         <!-- Sol Kısım -->
                         <div class="col-12 col-lg-3">
                             <div class="col mb-1" @click="openNewTab(githubProfile.html_url)" style="cursor: pointer">
-                                <i class="mdi mdi-account me-2"></i><b>{{ githubProfile.login }}</b>
+                                <v-tooltip text="GitHub Adresine Git" location="end">
+                                    <template v-slot:activator="{ props }">
+                                        <span v-bind="props"><i class="mdi mdi-account me-2"></i><b>{{ githubProfile.login }}</b></span>
+                                    </template>
+                                </v-tooltip>
                             </div>
                             <div class="col mb-1">
                                 <span @click="openNewTab('https://github.com/BusraOzcann?tab=following')" style="cursor: pointer"><b>{{ githubProfile.following }}</b> Takip edilen</span> {{ ' / ' }}
                                 <span @click="openNewTab('https://github.com/BusraOzcann?tab=followers')" style="cursor: pointer"><b>{{ githubProfile.followers }}</b> Takipçi</span>
                             </div>
                             <div class="col mb-1" style="cursor: pointer" @click="openNewTab('https://github.com/BusraOzcann?tab=repositories')">
-                                <i class="mdi mdi-source-repository me-2"></i><b>{{ githubProfile.public_repos }}</b> adet public repository
+                                <v-tooltip text="Depolara Git" location="end">
+                                    <template v-slot:activator="{ props }">
+                                        <span v-bind="props"><i class="mdi mdi-source-repository me-2"></i><b>{{ githubProfile.public_repos }}</b> adet public repository</span>
+                                    </template>
+                                </v-tooltip>
                             </div>
                         </div>
                         <!-- Sol kısım bitiş -->
@@ -36,7 +44,11 @@
                                 <i class="mdi mdi-office-building me-2"></i> {{ githubProfile.company }}
                             </div>
                             <div class="col mb-1" style="cursor: pointer" @click="openNewTab('https://twitter.com/busra_ozcan_')">
-                                <i class="mdi mdi-twitter me-2"></i> {{ githubProfile.twitter_username }}
+                                <v-tooltip text="Twitter Adresine Git" location="end">
+                                    <template v-slot:activator="{ props }">
+                                        <span v-bind="props"><i class="mdi mdi-twitter me-2"></i> {{ githubProfile.twitter_username }}</span>
+                                    </template>
+                                </v-tooltip>
                             </div>
                         </div>
                         <!-- Sağ kısım bitiş -->
@@ -60,29 +72,34 @@
                 }"
                 @slideChange="onSlideChange">
                     <swiper-slide v-for="(item, index) in githubRepos" :key="index" class="mb-3">
-                        <v-card class="mx-auto" max-width="344" @click="openNewTab(item.html_url)">
-                            <v-img src="/assets/GitHub_Logo_White.png" height="120"></v-img>
 
-                            <v-card-title>
-                            {{ item.name }}
-                            </v-card-title>
+                        <v-tooltip text="GitHup Respository Adresine Git" location="top">
+                            <template v-slot:activator="{ props }">
+                                <v-card v-bind="props" class="mx-auto" max-width="344" @click="openNewTab(item.html_url)">
+                                    <v-img src="/assets/GitHub_Logo_White.png" height="120"></v-img>
 
-                            <v-card-subtitle v-if="item.topics.length > 0">
-                                <span v-for="(topic, i) in item.topics" :key="i">
-                                    <span style="text-decoration: underline;">{{ topic }}</span> 
-                                    <span v-if="i != item.topics.length - 1">, </span>
-                                </span>
-                            </v-card-subtitle>
-                            <v-card-subtitle v-else>
-                                Etiket verilmemiş.
-                            </v-card-subtitle>
+                                    <v-card-title>
+                                    {{ item.name }}
+                                    </v-card-title>
 
-                            <v-card-text>
-                                <i v-if="!item.description" style="color: #858585; font-weight: 200;">Henüz bir açıklama yok.</i>
-                                <span style="font-weight: 500;" v-else>{{ item.description }}</span>
-                            </v-card-text>
-                            
-                        </v-card>
+                                    <v-card-subtitle v-if="item.topics.length > 0">
+                                        <span v-for="(topic, i) in item.topics" :key="i">
+                                            <span style="text-decoration: underline;">{{ topic }}</span> 
+                                            <span v-if="i != item.topics.length - 1">, </span>
+                                        </span>
+                                    </v-card-subtitle>
+                                    <v-card-subtitle v-else>
+                                        Etiket verilmemiş.
+                                    </v-card-subtitle>
+
+                                    <v-card-text>
+                                        <i v-if="!item.description" style="color: #858585; font-weight: 200;">Henüz bir açıklama yok.</i>
+                                        <span style="font-weight: 500;" v-else>{{ item.description }}</span>
+                                    </v-card-text>
+                                    
+                                </v-card>
+                            </template>
+                        </v-tooltip>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -139,7 +156,6 @@ export default {
             try{
                 GithubService.getRepos().then((response) => {
                     githubRepos.value = response.data
-                    console.log(response.data)
                     GithubService.getARepo(response.data[1].owner.login, response.data[1].name, response.data[1].default_branch).then((res) => {
                         // marked olarak olusturulan ve base64 formatında gönderilen readme contentini decode etme
                         // res.data.content = marked.parse(atob(res.data.content))
