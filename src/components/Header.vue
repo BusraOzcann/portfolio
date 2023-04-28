@@ -246,7 +246,6 @@ import {ref, onMounted, watch} from "vue"
 
   .navbar li.active {
     border-bottom: 2px solid #ffc10a;
-    border-top: 2px solid #ffc10a;
   }
 
   @keyframes rotate {
