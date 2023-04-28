@@ -49,9 +49,15 @@
                <swiper
                 :modules="modules"
                 :slides-per-view="slidePerView"
-                :space-between="40"
+                :space-between="30"
                 @swiper="onSwiper"
-                
+                :pagination="{
+                        clickable: true,
+                    }"
+                :autoplay ="{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }"
                 @slideChange="onSlideChange">
                     <swiper-slide v-for="(item, index) in githubRepos" :key="index" class="mb-3">
                         <v-card class="mx-auto" max-width="344" @click="openNewTab(item.html_url)">
@@ -88,14 +94,13 @@ import notification from "../notification"
 
 
 // SWIPER
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 export default {
     name: "Projects",
@@ -159,7 +164,7 @@ export default {
         const openNewTab = (url) => {
             window.open(url, ',_blank')
         }
-        return { githubProfile, githubRepos, repoDetay, onSwiper, onSlideChange, slidePerView, modules: [Navigation, Pagination, A11y], openNewTab }
+        return { githubProfile, githubRepos, repoDetay, onSwiper, onSlideChange, slidePerView, modules: [Navigation, Pagination, Navigation, Autoplay], openNewTab }
     }
 }
 </script>
@@ -178,6 +183,15 @@ export default {
             background-color: #0b9b9b !important;
             transition: background-color 0.5s ease-in-out;
         }
+
+        .swiper-pagination-bullet:not(.swiper-pagination-bullet-active){
+            background-color: #424242 !important;
+            transition: background-color 0.5s ease-in-out;
+        }
+        .swiper-pagination-bullet-active{
+            background-color: #0b9b9b !important;
+            transition: background-color 0.5s ease-in-out;
+        }
     }
 }
 
@@ -193,6 +207,16 @@ export default {
             background-color: #597dcd !important;
             transition: background-color 0.5s ease-in-out;
         }
+
+        
+        .swiper-pagination-bullet:not(.swiper-pagination-bullet-active){
+            background-color: #fff !important;
+            transition: background-color 0.5s ease-in-out;
+        }
+        .swiper-pagination-bullet .swiper-pagination-bullet-active{
+            background-color: #597dcd !important;
+            transition: background-color 0.5s ease-in-out;
+        }
     }
 }
 
@@ -204,9 +228,12 @@ export default {
 }
 
 #projects{
-    // .swiper{
-    //     padding: 0 50px !important;
-    // }
+    .swiper{
+        padding: 20px 0 !important;
+    }
+    .swiper-pagination{
+        bottom: -5px;
+    }
     .swiper-button-prev{
         color: $yellow-color !important
     }
