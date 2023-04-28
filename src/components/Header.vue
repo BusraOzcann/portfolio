@@ -19,15 +19,19 @@
           </ul>
 
           <div class="d-flex ms-5">
-            <div class="row theme-btn" @click="changeTheme" style="cursor: pointer; width: 150px;">
-              <div class="col-3 d-flex align-items-center " style="font-weight: 700;">
-                <i v-if="lightTheme == 'light'" class="mdi mdi-weather-sunny" style="font-size: 20px"></i>
-                <i v-if="lightTheme == 'dark'" class="mdi mdi-weather-night" style="font-size: 20px"></i>
-              </div>
-              <div class="col-9 d-flex align-items-center" style="font-weight: 700;">
-                {{ lightTheme == 'light' ? 'Açık Mod' : 'Koyu Mod' }}
-              </div>
-            </div>
+            <v-tooltip text="Tema Değiştir" location="end">
+              <template v-slot:activator="{ props }">
+                <div v-bind="props" class="row theme-btn" @click="changeTheme" style="cursor: pointer; width: 150px;">
+                  <div class="col-3 d-flex align-items-center " style="font-weight: 700;">
+                    <i v-if="lightTheme == 'light'" class="mdi mdi-weather-sunny" style="font-size: 20px"></i>
+                    <i v-if="lightTheme == 'dark'" class="mdi mdi-weather-night" style="font-size: 20px"></i>
+                  </div>
+                  <div class="col-9 d-flex align-items-center" style="font-weight: 700;">
+                    {{ lightTheme == 'light' ? 'Açık Mod' : 'Koyu Mod' }}
+                  </div>
+                </div>
+              </template>
+            </v-tooltip>
 
           </div>
         </div>
