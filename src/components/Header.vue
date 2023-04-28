@@ -2,7 +2,7 @@
     <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0" style="height: 60px;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="../assets/images/spaceship.gif" height="35" alt="" style="border-radius: 50%;">
+            <img src="../assets/images/spaceship.gif" height="45" alt="" style="border-radius: 50%;">
             <span class="ms-3">Büşra Özcan</span>
         </a>
 
@@ -12,8 +12,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
-            <li v-for="menuItem in menuItems" :key="menuItem.id" v-on:click="selectMenuItem(menuItem.id)" :class="{ 'active': menuItem.id === selectedMenuId, 'nav-item': true, 'mx-2': true }">
-              <a class="nav-link active" :href="menuItem.id">{{ menuItem.title }}</a>
+            <li v-for="menuItem in menuItems" :key="menuItem.id" v-on:click="selectMenuItem(menuItem.id)" :class="{ 'active': menuItem.id == selectedMenuId, 'nav-item': true, 'mx-2': true }">
+              <a class="nav-link active" :href="'#'+menuItem.id">{{ menuItem.title }}</a>
             </li>
 
           </ul>
@@ -36,24 +36,51 @@
 </template>
 
 <script>
-import {ref, onMounted} from "vue"
+import {ref, onMounted, watch} from "vue"
+
   export default {
     name: "Header",
     setup(){
         components: {  }
 
         let menuItems = ref([
-          {title: "Hakkımda", id:"#"},
-          {title: "Projelerim", id:"#projects"},
-          {title: "Süreçlerim", id:"#experience"},
-          {title: "İletişim", id:"#contact"}
+          {title: "Hakkımda", id:"aboutme"},
+          {title: "Projelerim", id:"projects"},
+          {title: "Süreçlerim", id:"experience"},
+          {title: "İletişim", id:"contact"}
         ])
         let lightTheme = ref('');
-        let selectedMenuId = ref('#aboutme')
+        let selectedMenuId = ref('aboutme')
+        let isScroll = ref(false)
 
         onMounted(() => {
           lightTheme.value = document.getElementById("app").getAttribute('data-theme');
+
+          var scrollTimer;
+          window.addEventListener("scroll", function () {
+            
+            if (scrollTimer) {
+              clearTimeout(scrollTimer);
+            }
+
+            scrollTimer = setTimeout(function () {
+              isScroll.value = false;
+              handleScroll()
+            }, 70);
+
+            isScroll.value = true;
+          });
+
+
         })
+
+        watch(
+          () => isScroll.value,
+
+          (newVal, oldVal) => {
+            // console.log({newVal})
+          }
+        )
 
         let changeTheme = (e) => {
             let app = document.getElementById("app");
@@ -75,7 +102,27 @@ import {ref, onMounted} from "vue"
           selectedMenuId.value = menuItemId
         }
 
-        return { changeTheme, lightTheme, menuItems, selectMenuItem, selectedMenuId }
+        let handleScroll = () => {
+          // Tüm bölümleri al
+          const sections = document.querySelectorAll('div[id^="aboutme"], div[id^="projects"], div[id^="experience"], div[id^="contact"]');
+
+          // Mevcut görünüm alanını al
+          const viewportHeight = window.innerHeight;
+          const scrollTop = window.scrollY;
+
+          // Hangi bölümün görüntülendiğini kontrol et
+          for (let i = 0; i < sections.length; i++) {
+            const section = sections[i];
+            const rect = section.getBoundingClientRect();
+            if (rect.top >= 0 && rect.top <= viewportHeight) {
+                selectedMenuId.value = section.id;
+                break;
+            }
+          }
+          
+        }
+
+        return { changeTheme, lightTheme, menuItems, selectMenuItem, selectedMenuId, isScroll }
     }
 }
 </script>
