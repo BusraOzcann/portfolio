@@ -1,6 +1,6 @@
 <template>
     <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0" style="height: 60px;">
-      <div class="container-fluid">
+      <div class="container-fluid" style="height: 100% !important;">
         <a class="navbar-brand" href="#">
             <img src="../assets/images/spaceship.gif" height="45" alt="" style="border-radius: 50%;">
             <span class="ms-3">Büşra Özcan</span>
@@ -10,7 +10,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" style="height: 100% !important;" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
             <li v-for="menuItem in menuItems" :key="menuItem.id" v-on:click="selectMenuItem(menuItem.id)" :class="{ 'active': menuItem.id == selectedMenuId, 'nav-item': true, 'mx-2': true }">
               <a class="nav-link active" :href="'#'+menuItem.id">{{ menuItem.title }}</a>
@@ -246,6 +246,7 @@ import {ref, onMounted, watch} from "vue"
 
   .navbar li.active {
     border-bottom: 2px solid #ffc10a;
+    border-top: 2px solid #ffc10a;
   }
 
   @keyframes rotate {
