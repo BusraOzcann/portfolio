@@ -67,8 +67,14 @@
                             {{ item.name }}
                             </v-card-title>
 
-                            <v-card-subtitle>
-                                {{ item.language ? item.language : "Dil Belirtilmemiş." }}
+                            <v-card-subtitle v-if="item.topics.length > 0">
+                                <span v-for="(topic, i) in item.topics" :key="i">
+                                    <span style="text-decoration: underline;">{{ topic }}</span> 
+                                    <span v-if="i != item.topics.length - 1">, </span>
+                                </span>
+                            </v-card-subtitle>
+                            <v-card-subtitle v-else>
+                                Etiket verilmemiş.
                             </v-card-subtitle>
 
                             <v-card-text>
@@ -133,6 +139,7 @@ export default {
             try{
                 GithubService.getRepos().then((response) => {
                     githubRepos.value = response.data
+                    console.log(response.data)
                     GithubService.getARepo(response.data[1].owner.login, response.data[1].name, response.data[1].default_branch).then((res) => {
                         // marked olarak olusturulan ve base64 formatında gönderilen readme contentini decode etme
                         // res.data.content = marked.parse(atob(res.data.content))
