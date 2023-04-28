@@ -3,7 +3,7 @@
         <div class="aboutme row">
             <div class="col-xs-12 col-sm-8 ">
                 <p style="font-weight: 700;">
-                    Merhaba, Ben Büşra Özcan. Siteme Hoşgeldiniz 🤗 
+                    Merhaba, Siteme Hoşgeldiniz 🤗 
                 </p>
 
                 <div class="activeText mb-2 ">
