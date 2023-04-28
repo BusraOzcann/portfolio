@@ -142,7 +142,6 @@ export default {
         const getGithubProfile = () => {
             try{
                 GithubService.getProfile().then((response) => {
-                    console.log("profile : ", response.data)
                     githubProfile.value = response.data;
                 })
             }catch(e){
