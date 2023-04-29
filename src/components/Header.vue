@@ -41,12 +41,13 @@
 
 <script>
 import {ref, onMounted, watch} from "vue"
+import {useStore } from "vuex"
 
   export default {
     name: "Header",
     setup(){
         components: {  }
-
+        const store = useStore()
         let menuItems = ref([
           {title: "Hakkımda", id:"aboutme"},
           {title: "Projelerim", id:"projects"},
@@ -91,11 +92,13 @@ import {ref, onMounted, watch} from "vue"
             if(app.getAttribute('data-theme') == 'light') {
               localStorage.setItem('theme', 'dark')
               app.setAttribute('data-theme', 'dark')
+              store.commit('changeTheme', 'dark')
               document.getElementById('nav').setAttribute('data-bs-theme', 'dark')
             }
             else if(app.getAttribute('data-theme') == 'dark') {
               localStorage.setItem('theme', 'light')
               app.setAttribute('data-theme', 'light');
+              store.commit('changeTheme', 'light')
               document.getElementById('nav').removeAttribute('data-bs-theme')
             }
 

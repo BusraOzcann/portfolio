@@ -31,9 +31,12 @@ const options = {
 
 // Router
 import router from "./route/index"
+// store vuex
+import store from "./store"
 
 const app = createApp(App)
 app.use(router)
+app.use(store)
 app.use(vuetify)
 app.use(Toast, options);
 

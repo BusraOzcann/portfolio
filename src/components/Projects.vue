@@ -56,54 +56,47 @@
                 </div>
                 <!-- Avatarın sagındaki bilgi içeren kısım bitiş -->
             </div>
+            <hr>
+
+            <!-- projects section -->
 
             <div class="row">
-               <swiper
-                :modules="modules"
-                :slides-per-view="slidePerView"
-                :space-between="30"
-                @swiper="onSwiper"
-                :pagination="{
-                        clickable: true,
-                    }"
-                :autoplay ="{
-                    delay: 5000,
-                    disableOnInteraction: false,
-                }"
-                @slideChange="onSlideChange">
-                    <swiper-slide v-for="(item, index) in githubRepos" :key="index" class="mb-3">
-
-                        <v-tooltip text="GitHup Respository Adresine Git" location="top">
-                            <template v-slot:activator="{ props }">
-                                <v-card v-bind="props" class="mx-auto" max-width="344" @click="openNewTab(item.html_url)">
-                                    <v-img src="/assets/GitHub_Logo_White.png" height="120"></v-img>
-
-                                    <v-card-title>
-                                    {{ item.name }}
-                                    </v-card-title>
-
-                                    <v-card-subtitle v-if="item.topics.length > 0">
-                                        <span v-for="(topic, i) in item.topics" :key="i">
-                                            <span style="text-decoration: underline;">{{ topic }}</span> 
-                                            <span v-if="i != item.topics.length - 1">, </span>
-                                        </span>
-                                    </v-card-subtitle>
-                                    <v-card-subtitle v-else>
-                                        Etiket verilmemiş.
-                                    </v-card-subtitle>
-
-                                    <v-card-text>
-                                        <i v-if="!item.description" style="color: #858585; font-weight: 200;">Henüz bir açıklama yok.</i>
-                                        <span style="font-weight: 500;" v-else>{{ item.description }}</span>
-                                    </v-card-text>
-                                    
-                                </v-card>
-                            </template>
-                        </v-tooltip>
-                    </swiper-slide>
-                </swiper>
+                <div class="col-12">
+                    <h2>
+                        Vuejs Projelerim
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <vue-projects/>
+                </div>
             </div>
-            
+
+                
+            <div class="row">
+                <div class="col-12">
+                    <h2>
+                        React Projelerim
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <react-projects/>
+                </div>
+            </div>
+
+
+            <!-- <div class="row">
+                <div class="col-12">
+                    <h2>
+                        AI Projelerim
+                    </h2>
+                </div>
+                <div class="col-12">
+                    <a-i-projects/>
+                </div>
+            </div> -->
+
+            <!-- projects section end -->
+
         </div>
     </div>
 </template>
@@ -115,41 +108,29 @@ import { marked } from 'marked';
 import GithubService from '@/Services/GithubService';
 import notification from "../notification"
 
-
-// SWIPER
-import { Navigation, Pagination, Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+//COMPONENTS 
+import AIProjects from "./Projects/AIProjects.vue";
+import VueProjects from "./Projects/VueProjects.vue";
+import ReactProjects from "./Projects/ReactProjects.vue";
 
 export default {
     name: "Projects",
     components: {
-        Swiper,
-        SwiperSlide,
+        AIProjects,
+        VueProjects,
+        ReactProjects
     },
     setup(){
         const githubProfile = ref("")
         const githubRepos = ref("")
         const repoDetay = ref("")
-        const slidePerView = ref("")
         let key = ""
 
         onMounted(() => {
             key = process.env.VUE_APP_GITHUB_KEY
 
             getGithubProfile()
-            getRepositories()
-
-            // MOBİL CİHAZLARDA SLİDER GÖRÜNÜMÜ GÜNCELLE !
-            if(navigator.userAgentData.mobile == true){
-                slidePerView.value = 1;
-            }else if(navigator.userAgentData.mobile == false){
-                slidePerView.value = 3.5
-            }
+            // getRepositories()
         })
 
         const getRepositories = () => {
@@ -177,17 +158,10 @@ export default {
             }
         }
 
-        const onSwiper = (swiper) => {
-            // console.log(swiper);
-        };
-        const onSlideChange = () => {
-            // console.log('slide change');
-        };
-
         const openNewTab = (url) => {
             window.open(url, ',_blank')
         }
-        return { githubProfile, githubRepos, repoDetay, onSwiper, onSlideChange, slidePerView, modules: [Navigation, Pagination, Navigation, Autoplay], openNewTab }
+        return { githubProfile, githubRepos, repoDetay, openNewTab }
     }
 }
 </script>
@@ -251,6 +225,11 @@ export default {
 }
 
 #projects{
+    h2::before{
+        content: "\2022";
+        margin-right: 10px;
+    }
+
     .swiper{
         padding: 20px 0 !important;
     }
@@ -266,13 +245,13 @@ export default {
     }
 
     .v-card{
-        cursor: pointer;
-        .v-img{
-            img{
-                top: 20px;
-                height: 80px !important;
-            }
-        }
+        // cursor: pointer;
+        // .v-img{
+        //     img{
+        //         top: 20px;
+        //         height: 80px !important;
+        //     }
+        // }
     }
 
     .v-avatar{
