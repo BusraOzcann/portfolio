@@ -27,8 +27,6 @@ const options = {
     position: 'bottom-right',
 };
 
-
-
 // Router
 import router from "./route/index"
 // store vuex

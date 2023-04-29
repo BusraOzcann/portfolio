@@ -6,8 +6,9 @@
                     Merhaba, Siteme Hoşgeldiniz 🤗 
                 </p>
 
-                <div class="activeText mb-2 ">
-                    <b :key="k" id="activeText" class="animated fadeIn">{{ activeText }}</b>
+                
+                <div class="activeText mb-2 animate__animated animate__fadeInLeft" :key="k">
+                    <b>{{ activeText }}</b>
                 </div>
 
                 <p style="margin-bottom: 30px">
@@ -21,7 +22,7 @@
             </div>
 
 
-            <div class="col-xs-12 col-sm-4 d-flex justify-content-center">
+            <div class="col-xs-12 col-sm-4 d-flex justify-content-center animate__animated animate__zoomIn">
                 <img :src="image1" alt="picture" id="aboutPicture">
             </div>
             
@@ -90,11 +91,18 @@ export default {
             background-color: #eeeeee;
             color: #5d5d5f;
         }
+
+        .activeText{
+            color: $pink-color;
+        }
     }
     [data-theme='dark']{
         .resume-btn button{
             background-color: #5d5d5f;
             color: #eeeeee;
+        }
+        .activeText{
+            color: $yellow-color
         }
     }
 
@@ -102,10 +110,8 @@ export default {
         padding-top: 10px;
         
         .activeText{
-            position: relative;
-            opacity: 1;
             font-size: $active-text-size;
-            color: $yellow-color;
+            transition: color 0.5s;
         }
 
         .resume-btn{
@@ -113,6 +119,21 @@ export default {
                 width: 200px;
                 height: 50px;
                 border-radius: 50px;
+                -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+            -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+            box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+            }
+            button:active{
+                animation: movebutton 0.3s;
+            }
+        }
+
+        @keyframes movebutton {
+            50%{
+                transform: translate(0, 3px);
+            }
+            100%{
+                transform: translate(0, 0);
             }
         }
 

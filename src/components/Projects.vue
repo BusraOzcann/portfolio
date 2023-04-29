@@ -1,6 +1,6 @@
 <template>
     <div id="projects" class="container py-5 d-flex justify-content-center align-items-center">
-        <div style="margin-top: 60px; width: 100%;">
+        <div style="margin-top: 60px">
             <div class="row mb-4">
                 <!-- Avatar baslangıc -->
                 <div class="col-12 col-lg-1 mb-3">
@@ -60,7 +60,7 @@
 
             <!-- projects section -->
 
-            <div class="row">
+            <div id="vue" class="row animate__animated animate__slideInRight">
                 <div class="col-12">
                     <h2>
                         Vuejs Projelerim
@@ -72,7 +72,7 @@
             </div>
 
                 
-            <div class="row">
+            <div id="react" class="row animate__animated animate__slideInLeft">
                 <div class="col-12">
                     <h2>
                         React Projelerim
@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue"
+import { ref, onMounted, defineComponent } from "vue"
 import { marked } from 'marked';
 
 import GithubService from '@/Services/GithubService';
@@ -113,57 +113,60 @@ import AIProjects from "./Projects/AIProjects.vue";
 import VueProjects from "./Projects/VueProjects.vue";
 import ReactProjects from "./Projects/ReactProjects.vue";
 
-export default {
-    name: "Projects",
-    components: {
-        AIProjects,
-        VueProjects,
-        ReactProjects
-    },
-    setup(){
-        const githubProfile = ref("")
-        const githubRepos = ref("")
-        const repoDetay = ref("")
-        let key = ""
+export default defineComponent(
+    {
+        name: "Projects",
+        components: {
+            AIProjects,
+            VueProjects,
+            ReactProjects
+        },
+        setup() {
+            const githubProfile = ref("")
+            const githubRepos = ref("")
+            const repoDetay = ref("")
+            let key = ""
 
-        onMounted(() => {
-            key = process.env.VUE_APP_GITHUB_KEY
+            onMounted(() => {
+                key = process.env.VUE_APP_GITHUB_KEY
 
-            getGithubProfile()
-            // getRepositories()
-        })
+                getGithubProfile();
+                // getRepositories();
+            })
+            
 
-        const getRepositories = () => {
-            try{
-                GithubService.getRepos().then((response) => {
-                    githubRepos.value = response.data
-                    GithubService.getARepo(response.data[1].owner.login, response.data[1].name, response.data[1].default_branch).then((res) => {
-                        // marked olarak olusturulan ve base64 formatında gönderilen readme contentini decode etme
-                        // res.data.content = marked.parse(atob(res.data.content))
-                        // repoDetay.value = res.data
+            const getRepositories = () => {
+                try {
+                    GithubService.getRepos().then((response) => {
+                        githubRepos.value = response.data
+                        GithubService.getARepo(response.data[1].owner.login, response.data[1].name, response.data[1].default_branch).then((res) => {
+                            // marked olarak olusturulan ve base64 formatında gönderilen readme contentini decode etme
+                            // res.data.content = marked.parse(atob(res.data.content))
+                            // repoDetay.value = res.data
+                        })
                     })
-                })
-            }catch(e){
-                notification.toast("error", "Github depolar getirilirken bir hata meydana geldi", 2000)
+                } catch (e) {
+                    notification.toast("error", "Github depolar getirilirken bir hata meydana geldi", 2000)
+                }
             }
-        }
 
-        const getGithubProfile = () => {
-            try{
-                GithubService.getProfile().then((response) => {
-                    githubProfile.value = response.data;
-                })
-            }catch(e){
-                notification.toast("error", "Github bilgileri getirilirken bir hata meydana geldi")
+            const getGithubProfile = () => {
+                try {
+                    GithubService.getProfile().then((response) => {
+                        githubProfile.value = response.data;
+                    })
+                } catch (e) {
+                    notification.toast("error", "Github bilgileri getirilirken bir hata meydana geldi")
+                }
             }
-        }
 
-        const openNewTab = (url) => {
-            window.open(url, ',_blank')
+            const openNewTab = (url) => {
+                window.open(url, ',_blank')
+            }
+            return { githubProfile, githubRepos, repoDetay, openNewTab }
         }
-        return { githubProfile, githubRepos, repoDetay, openNewTab }
     }
-}
+)
 </script>
 
 <style lang="scss">
@@ -172,9 +175,9 @@ export default {
 [data-theme='light']{
     #projects{
         .v-card{
-            -webkit-box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
-            -moz-box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
-            box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
+            -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+            -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+            box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
         }
         .v-img{
             background-color: #0b9b9b !important;
@@ -195,9 +198,9 @@ export default {
 [data-theme='dark']{
     #projects{
         .v-card{
-            webkit-box-shadow: 8px 0px 10px -3px rgba(0,0,0,1);
-            -moz-box-shadow: 8px 0px 10px -3px rgba(0,0,0,1);
-            box-shadow: 8px 0px 10px -3px rgba(0,0,0,1);
+            -webkit-box-shadow: 0px 7px 8px -4px rgba(208, 206, 206, 0.47);
+            -moz-box-shadow: 0px 7px 8px -4px rgba(208, 206, 206, 0.47);
+            box-shadow: 0px 7px 8px -4px rgba(208, 206, 206, 0.47);
         }
 
         .v-img{
@@ -256,9 +259,9 @@ export default {
 
     .v-avatar{
         cursor: pointer;
-        -webkit-box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
-        -moz-box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
-        box-shadow: 5px -1px 10px -3px rgba(0,0,0,0.58);
+        -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+        -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+        box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
     }
 }
 

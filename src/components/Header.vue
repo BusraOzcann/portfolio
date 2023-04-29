@@ -121,7 +121,7 @@ import {useStore } from "vuex"
           for (let i = 0; i < sections.length; i++) {
             const section = sections[i];
             const rect = section.getBoundingClientRect();
-            if (rect.top >= 0 && rect.top <= viewportHeight) {
+            if (rect.top >= 0 && (rect.top) <= viewportHeight) {
                 selectedMenuId.value = section.id;
                 break;
             }
@@ -161,6 +161,17 @@ import {useStore } from "vuex"
     }
   }
 
+  [data-theme='light']{
+    .navbar li.active {
+      border-bottom: 2px solid $pink-color;
+    }
+
+    .theme-btn{
+      border: 2px solid;
+      border-image: conic-gradient(from var(--angle), $pink-color, #395eda, #8739da, #c739da, #aa39da, #7649ca, $pink-color) 1;
+    }
+  }
+
   // light theme end  ---------------------------------------------------------------------
 
 
@@ -187,8 +198,17 @@ import {useStore } from "vuex"
     .navbar{
       background-color: $background-dark !important;
     }
+  }
 
-    
+  [data-theme='dark']{
+    .navbar li.active {
+      border-bottom: 2px solid $yellow-color;
+    }
+
+    .theme-btn{
+      border: 2px solid;
+      border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
+    }
   }
   //dark theme end  ---------------------------------------------------------------------
 
@@ -239,20 +259,12 @@ import {useStore } from "vuex"
         button:focus{
           outline: none !important;
         }
+        
       }
     }
   }
-
-  .theme-btn{
-    border: 2px solid;
-    border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
-  }
-  .theme-btn:hover {
+  .theme-btn {
     animation: 5s rotate linear infinite;
-  }
-
-  .navbar li.active {
-    border-bottom: 2px solid #ffc10a;
   }
 
   @keyframes rotate {

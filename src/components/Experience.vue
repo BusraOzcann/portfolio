@@ -1,5 +1,5 @@
 <template>
-    <div id="experience" class="container py-5" style="height: 500px; ">
+    <div id="experience" class="container py-5" style="height: 900px; ">
         <div style="margin-top: 60px">
             
              <v-timeline align="start">
@@ -10,10 +10,10 @@
                     size="small"
                 >
                 <template v-slot:opposite>
-                    <div :class="`pt-1 headline font-weight-bold text-${year.color}`" v-text="year.year"></div>
+                    <div :class="`pt-1 headline font-weight-bold`" v-text="year.year"></div>
                 </template>
                 <div>
-                    <h2 :class="`mt-n1 headline font-weight-light mb-4 text-${year.color}`">
+                    <h2 :class="`mt-n1 headline font-weight-light mb-4`">
                         <b>{{ year.title }}</b>
                     </h2>
                     <div>
@@ -33,7 +33,7 @@ export default {
     setup(){
         const years = ref([
             { year : "2016 Eylül - 2021 Mart", color: "#fcb404", title: "Üniversite", text: "Cumhuriyet Üniversitesi Bilgisayar Mühendisliği"},
-            { year : "2021 Eylül - ~", color: "#fcbc36", title: "Yüksek Lisans", text: "Sivas Bilim ve Teknoloji Üniversitesi Savunma Teknolojileri A.B.D"},
+            { year : "2021 Eylül - HALEN", color: "#fcbc36", title: "Yüksek Lisans", text: "Sivas Bilim ve Teknoloji Üniversitesi Savunma Teknolojileri A.B.D"},
             { year: "2022 Şubat - 2022 Mart", color: "#fcc660", title: "İş Tecrübesi", text: "Sivas Teknokent Hakan Bilgi Teknolojileri" }
         ])
 
@@ -49,6 +49,15 @@ export default {
         .v-timeline-divider__before, .v-timeline-divider__after{
             background-color: white !important
         }
+    }
+}
+
+#experience{
+    .v-timeline-item__body{
+        height: 250px;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
     }
 }
 

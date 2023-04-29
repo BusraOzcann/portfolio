@@ -1,8 +1,8 @@
 <template>
-    <div id="contact" class="container py-5" style="height: 500px; ">
-        <div style="margin-top: 60px">
+    <div id="contact" class="py-5" >
+        <div class="container">
             <div class="row">
-                <div class="col-12 mb-5">
+                <!-- <div class="col-12 mb-5">
                     <h4>BENİMLE İLETİŞİME GEÇ</h4>
                 </div>
                 <v-form v-model="valid">
@@ -27,17 +27,36 @@
                             :v-model="message"
                         ></v-textarea>
                     </div>
-                    <div class="col-12">
-                        <i style="font-weight: 100;">ozcan.busra1999@gmail.com</i>
-                        <v-tooltip text="Mesajı Gönder">
-                            <template v-slot:activator="{ props }">
-                                <v-btn v-bind="props" class="float-end" prepend-icon="mdi-email-arrow-right">
-                                    Gönder
-                                </v-btn>
-                            </template>
-                        </v-tooltip>
+                    
+                </v-form> -->
+
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 fs-6">
+                            <i class="mdi mdi-gmail me-2"></i> ozcan.busra1999@gmail.com
+                        </div>
+                        <div class="col-12 fs-6">
+                            <i class="mdi mdi-linkedin me-2"></i> bsrozcan
+                        </div>
+                        <div class="col-12 fs-6">
+                            <i class="mdi mdi-package-variant-closed me-2"></i> busraozcan
+                        </div>
+                        <div class="col-12 fs-6">
+                            <i class="mdi mdi-instagram me-2"></i> busraozcannnn
+                        </div>
                     </div>
-                </v-form>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <v-tooltip text="E-Posta Gönder" location="top">
+                        <template v-slot:activator="{ props }">
+                            <v-btn v-bind="props" class="float-end" prepend-icon="mdi-email-arrow-right" size="large" color="success" rounded="xs" @click="sendMail">
+                                Bana Mail İle Ulaş
+                            </v-btn>
+                        </template>
+                    </v-tooltip>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -59,7 +78,43 @@ export default {
             },
         }
     },
+    methods: {
+        sendMail() {
+            // Mail adresinizi belirleyin
+            const to = "ozcan.busra1999@gmail.com";
+
+            // Mail konusu ve içeriğini belirleyin
+            const subject = "";
+            const body = "";
+
+            // Mailto linkini oluşturun
+            const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Linki yeni bir pencerede açın
+            window.open(mailtoLink, "_blank");
+        }
+    }
 }
 </script>
 <style lang="scss">
+
+@import "../assets/style/_variables.scss";
+
+#contact{
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+[data-theme='dark']{
+    #contact{
+        background-color: $background-dark-footer !important;
+    }
+}
+
+[data-theme='light']{
+    #contact{
+        background-color: $background-light-footer !important;
+    }
+}
 </style>
