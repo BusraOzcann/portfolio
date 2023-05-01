@@ -2,6 +2,13 @@
     <div id="skills" class="py-5">
         <div style="margin-top: 60px">
             <div class="row">
+                
+                <div class="col-12 mb-2 d-flex justify-content-center">
+                    <h3><b>YETENEKLERİM</b></h3>
+                </div>
+
+                <hr class="mb-2">
+
                 <div class="col-3 my-5" v-for="(item, index) in skills" :key="index">
                     
                     <div class="row">
