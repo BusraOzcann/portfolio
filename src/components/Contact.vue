@@ -1,35 +1,7 @@
 <template>
-    <div id="contact" class="py-5" >
+    <div id="contact" class="py-5">
         <div class="container">
             <div class="row">
-                <!-- <div class="col-12 mb-5">
-                    <h4>BENİMLE İLETİŞİME GEÇ</h4>
-                </div>
-                <v-form v-model="valid">
-                    <div class="col-12 mb-3">
-                        <v-text-field 
-                        label="E-Posta" 
-                        variant="outlined"
-                        hint="Size daha sonra ulaşabilmem için lütfen e-posta adresinizi girin." 
-                        v-model="email"
-                        :rules="[rules.required, rules.email]"
-                        >
-                    </v-text-field>
-                    </div>
-
-                    <div class="col-12 mb-2">
-                        <v-textarea
-                            name="input-7-1"
-                            variant="outlined"
-                            label="Mesajınız"
-                            auto-grow
-                            :rules="[rules.required]"
-                            :v-model="message"
-                        ></v-textarea>
-                    </div>
-                    
-                </v-form> -->
-
                 <div class="col-12 col-lg-6">
                     <div class="row">
                         <div class="col-12 fs-6">
@@ -39,7 +11,7 @@
                             <i class="mdi mdi-linkedin me-2"></i> bsrozcan
                         </div>
                         <div class="col-12 fs-6">
-                            <i class="mdi mdi-package-variant-closed me-2"></i> busraozcan
+                            <img src="@/assets/images/medium.png" alt="medium-icon" class="me-2" height="15px"/> busraozcan
                         </div>
                         <div class="col-12 fs-6">
                             <i class="mdi mdi-instagram me-2"></i> busraozcannnn

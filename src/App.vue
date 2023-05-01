@@ -6,6 +6,7 @@
     <div>
       <AboutMe />
       <Projects />
+      <Skills />
       <Experience />
       <Contact />
     </div>
@@ -19,13 +20,14 @@ import AboutMe from "./components/AboutMe"
 import Projects from "./components/Projects"
 import Experience from "./components/Experience"
 import Contact from "./components/Contact"
+import Skills from "./components/Skills"
 
 import {ref, onMounted} from "vue"
 import { useStore } from "vuex"
 
 export default {
   name: 'App',
-  components: { Header, AboutMe, Projects, Experience, Contact },
+  components: { Header, AboutMe, Projects, Experience, Contact, Skills },
   setup(){
     const store = useStore()
     let isScrolled = ref(false);

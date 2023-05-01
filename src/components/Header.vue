@@ -50,8 +50,9 @@ import {useStore } from "vuex"
         const store = useStore()
         let menuItems = ref([
           {title: "Hakkımda", id:"aboutme"},
-          {title: "Projelerim", id:"projects"},
-          {title: "Süreçlerim", id:"experience"},
+          {title: "Projeler", id:"projects"},
+          { title: "Yetenekler", id: "skills" },
+          {title: "Süreçler", id:"experience"},
           {title: "İletişim", id:"contact"}
         ])
         let lightTheme = ref('');
