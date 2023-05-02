@@ -12,7 +12,7 @@
                 </p>
 
                 <p style="margin-bottom: 30px; text-indent: 30px; line-height: 1.8; text-align: justify">
-                    2021 Mart ayında Sivas Cumhuriyet Üniversitesi Bilgisayar Mühendisliği bölümünden mezun oldum. Front-end alanında Vuejs framework'ü ile 1 yıl profesyonel tecrübem var. Vuejs framework'ü dışında React framework'ü ile de ilgileniyorum. Şu anda kendimi bu frameworkler ile daha çok geliştirmeye devam ediyorum. 
+                    2021 yılı Mart ayında Sivas Cumhuriyet Üniversitesi Bilgisayar Mühendisliği Bölümü'nden mezun oldum. Front-end alanında Vuejs framework'ü ile 1 yıl profesyonel tecrübem var. Vuejs framework'ü dışında React framework'ü ile de ilgileniyorum. Şu anda kendimi bu frameworkler ile daha çok geliştirmeye devam ediyorum. 
                 </p>
 
                 <div class="resume-btn col-xs-12 col-lg-6 mb-5">

@@ -38,8 +38,8 @@ export default {
     }
 
     onMounted(() => {
+      var app = document.getElementById("app")
       if (localStorage.getItem("theme")) {
-        var app = document.getElementById("app")
         var currentTheme = localStorage.getItem("theme")
         store.commit('changeTheme', currentTheme);
         if (currentTheme == 'light') app.setAttribute('data-theme', 'light');
@@ -48,7 +48,11 @@ export default {
           $('.radio-inner').addClass("active")
         } 
       } else {
-        localStorage.setItem('theme', 'dark')
+        // default dark mode acılsın
+        localStorage.setItem('theme', 'dark');
+        app.setAttribute('data-theme', 'dark');
+        $('.radio-inner').addClass("active")
+        store.commit('changeTheme', 'dark');
       }
 
       window.addEventListener("scroll", handleScroll);
