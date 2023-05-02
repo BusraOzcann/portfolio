@@ -4,17 +4,28 @@
             <div class="row">
                 <div class="col-12 col-lg-6">
                     <div class="row">
-                        <div class="col-12 fs-6">
-                            <i class="mdi mdi-gmail me-2"></i> ozcan.busra1999@gmail.com
+                        <!-- <div class="col-12 fs-6 mb-1">
+                            <img src="@/assets/images/logo/google-plus.png" alt="medium-icon" class="me-2" height="15px"/> ozcan.busra1999@gmail.com
+                        </div> -->
+                        <div class="col-12 fs-6 mb-1" >
+                            <span style="cursor: pointer" @click="openLink('https://www.linkedin.com/in/bsrozcan/')">
+                                <img src="@/assets/images/logo/linkedin.png" alt="medium-icon" class="me-2 social-logo" /> bsrozcan
+                            </span>
                         </div>
-                        <div class="col-12 fs-6">
-                            <i class="mdi mdi-linkedin me-2"></i> bsrozcan
+                        <div class="col-12 fs-6 mb-1" >
+                            <span style="cursor: pointer" @click="openLink('https://medium.com/@busraozcan')">
+                                <img src="@/assets/images/logo/medium.png" alt="medium-icon" class="me-2 social-logo"/> busraozcan
+                            </span>
                         </div>
-                        <div class="col-12 fs-6">
-                            <img src="@/assets/images/medium.png" alt="medium-icon" class="me-2" height="15px"/> busraozcan
+                        <div class="col-12 fs-6 mb-1" >
+                            <span style="cursor: pointer" @click="openLink('https://www.instagram.com/busraozcannnn/')">
+                                <img src="@/assets/images/logo/instagram.png" alt="medium-icon" class="me-2 social-logo" /> busraozcannnn
+                            </span>
                         </div>
-                        <div class="col-12 fs-6">
-                            <i class="mdi mdi-instagram me-2"></i> busraozcannnn
+                        <div class="col-12 fs-6 mb-1" >
+                            <span style="cursor: pointer" @click="openLink('https://twitter.com/busra_ozcan_')">
+                                <img src="@/assets/images/logo/twitter.png" alt="medium-icon" class="me-2 social-logo"/> busra_ozcan_
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -64,6 +75,10 @@ export default {
 
             // Linki yeni bir pencerede açın
             window.open(mailtoLink, "_blank");
+        },
+        
+        openLink(url) {
+            window.open(url, ',_blank')
         }
     }
 }
@@ -76,7 +91,13 @@ export default {
     position: absolute;
     left: 0;
     width: 100%;
+
+    
 }
+
+.social-logo{
+        height: 15px !important;
+    }
 
 [data-theme='dark']{
     #contact{

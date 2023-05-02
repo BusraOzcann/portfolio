@@ -43,13 +43,13 @@
                             <div class="col mb-1">
                                 <i class="mdi mdi-office-building me-2"></i> {{ githubProfile.company }}
                             </div>
-                            <div class="col mb-1" style="cursor: pointer" @click="openNewTab('https://twitter.com/busra_ozcan_')">
+                            <!-- <div class="col mb-1" style="cursor: pointer" @click="openNewTab('https://twitter.com/busra_ozcan_')">
                                 <v-tooltip text="Twitter Adresine Git" location="end">
                                     <template v-slot:activator="{ props }">
                                         <span v-bind="props"><i class="mdi mdi-twitter me-2"></i> {{ githubProfile.twitter_username }}</span>
                                     </template>
                                 </v-tooltip>
-                            </div>
+                            </div> -->
                         </div>
                         <!-- Sağ kısım bitiş -->
                     </div>
@@ -205,17 +205,17 @@ export default defineComponent(
 
         .v-img{
             background-color: #597dcd !important;
-            transition: background-color 0.5s ease-in-out;
+            transition: all $all-anim-transition;
         }
 
         
         .swiper-pagination-bullet:not(.swiper-pagination-bullet-active){
             background-color: #fff !important;
-            transition: background-color 0.5s ease-in-out;
+            transition: all $all-anim-transition;
         }
         .swiper-pagination-bullet .swiper-pagination-bullet-active{
             background-color: #597dcd !important;
-            transition: background-color 0.5s ease-in-out;
+            transition: all $all-anim-transition;
         }
     }
 }

@@ -1,9 +1,8 @@
 <template>
-    <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0" style="height: 60px;">
+    <nav id="nav" class="navbar navbar-expand-md bg-body-tertiary m-0 " style="height: 60px;">
       <div class="container-fluid" style="height: 100% !important;">
         <a class="navbar-brand" href="#">
-            <img src="../assets/images/spaceship.gif" height="45" alt="" style="border-radius: 50%;">
-            <span class="ms-3">Büşra Özcan</span>
+            <!-- <img src="../assets/images/spaceship.gif" height="45" alt="" style="border-radius: 50%;"> -->
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,19 +18,16 @@
           </ul>
 
           <div class="d-flex ms-5">
+
             <v-tooltip text="Tema Değiştir" location="end">
               <template v-slot:activator="{ props }">
-                <div v-bind="props" class="row theme-btn" @click="changeTheme" style="cursor: pointer; width: 150px;">
-                  <div class="col-3 d-flex align-items-center " style="font-weight: 700;">
-                    <i v-if="lightTheme == 'light'" class="mdi mdi-weather-sunny" style="font-size: 20px"></i>
-                    <i v-if="lightTheme == 'dark'" class="mdi mdi-weather-night" style="font-size: 20px"></i>
-                  </div>
-                  <div class="col-9 d-flex align-items-center" style="font-weight: 700;">
-                    {{ lightTheme == 'light' ? 'Açık Mod' : 'Koyu Mod' }}
-                  </div>
+                <div v-bind="props" class="radio-btn" @click="changeTheme">
+                  <div class="radio-inner" ></div>
                 </div>
               </template>
             </v-tooltip>
+
+            
 
           </div>
         </div>
@@ -42,14 +38,14 @@
 <script>
 import {ref, onMounted, watch} from "vue"
 import {useStore } from "vuex"
+import $ from "jquery"
 
   export default {
     name: "Header",
     setup(){
-        components: {  }
-        const store = useStore()
+        const store = useStore();
         let menuItems = ref([
-          {title: "Hakkımda", id:"aboutme"},
+          {title: "Hakkımda", id:""},
           {title: "Projeler", id:"projects"},
           { title: "Yetenekler", id: "skills" },
           {title: "Süreçler", id:"experience"},
@@ -57,38 +53,29 @@ import {useStore } from "vuex"
         ])
         let lightTheme = ref('');
         let selectedMenuId = ref('aboutme')
-        let isScroll = ref(false)
 
         onMounted(() => {
+          selectedMenuId.value = ''
           lightTheme.value = document.getElementById("app").getAttribute('data-theme');
+          if(lightTheme == 'dark') $('.radio-inner').addClass("active")
 
           var scrollTimer;
           window.addEventListener("scroll", function () {
-            
             if (scrollTimer) {
               clearTimeout(scrollTimer);
             }
-
             scrollTimer = setTimeout(function () {
-              isScroll.value = false;
               handleScroll()
             }, 70);
 
-            isScroll.value = true;
           });
-
 
         })
 
-        watch(
-          () => isScroll.value,
-
-          (newVal, oldVal) => {
-            // console.log({newVal})
-          }
-        )
 
         let changeTheme = (e) => {
+            $('.radio-inner').toggleClass("active")
+
             let app = document.getElementById("app");
             if(app.getAttribute('data-theme') == 'light') {
               localStorage.setItem('theme', 'dark')
@@ -112,7 +99,7 @@ import {useStore } from "vuex"
 
         let handleScroll = () => {
           // Tüm bölümleri al
-          const sections = document.querySelectorAll('div[id^="aboutme"], div[id^="projects"], div[id^="experience"], div[id^="contact"]');
+          const sections = document.querySelectorAll('div[id^="aboutme"], div[id^="projects"], div[id^="experience"], div[id^="contact"], div[id^="skills"]');
 
           // Mevcut görünüm alanını al
           const viewportHeight = window.innerHeight;
@@ -122,7 +109,11 @@ import {useStore } from "vuex"
           for (let i = 0; i < sections.length; i++) {
             const section = sections[i];
             const rect = section.getBoundingClientRect();
-            if (rect.top >= 0 && (rect.top) <= viewportHeight) {
+            if (rect.top == '60') {
+              selectedMenuId.value = ''
+              break;
+            }
+            else if (rect.top >= 0 && (rect.top) <= viewportHeight) {
                 selectedMenuId.value = section.id;
                 break;
             }
@@ -130,7 +121,7 @@ import {useStore } from "vuex"
           
         }
 
-        return { changeTheme, lightTheme, menuItems, selectMenuItem, selectedMenuId, isScroll }
+        return { changeTheme, lightTheme, menuItems, selectMenuItem, selectedMenuId }
     }
 }
 </script>
@@ -154,23 +145,26 @@ import {useStore } from "vuex"
     }
   }
   [data-theme='light'] #nav .nav-item.active .nav-link{
-    color: $text-color-light !important
+    color: $text-color-light !important;
+    transition: all $all-anim-transition;
   }
   [data-theme='light'] .scrolled{
     .navbar{
       background-color: $background-light !important;
+      transition: all $all-anim-transition;
     }
   }
 
   [data-theme='light']{
     .navbar li.active {
       border-bottom: 2px solid $pink-color;
+      transition: all $all-anim-transition;
     }
 
-    .theme-btn{
-      border: 2px solid;
-      border-image: conic-gradient(from var(--angle), $pink-color, #395eda, #8739da, #c739da, #aa39da, #7649ca, $pink-color) 1;
+    .radio-inner{
+      background-color: $background-light;
     }
+    
   }
 
   // light theme end  ---------------------------------------------------------------------
@@ -192,12 +186,14 @@ import {useStore } from "vuex"
   }
 
   [data-theme='dark'] #nav .nav-item.active .nav-link {
-    color: $text-color-dark !important
+    color: $text-color-dark !important;
+    transition: all $all-anim-transition;
   }
 
   [data-theme='dark'] .scrolled{
     .navbar{
       background-color: $background-dark !important;
+      transition: all $all-anim-transition;
     }
   }
 
@@ -206,9 +202,8 @@ import {useStore } from "vuex"
       border-bottom: 2px solid $yellow-color;
     }
 
-    .theme-btn{
-      border: 2px solid;
-      border-image: conic-gradient(from var(--angle), #ffc10a, #FFB200, #F2921D, #ef880b, #eb8100, #FFB200, #ffc10a) 1;
+    .radio-inner{
+        background-color: $background-dark;
     }
   }
   //dark theme end  ---------------------------------------------------------------------
@@ -264,20 +259,46 @@ import {useStore } from "vuex"
       }
     }
   }
-  .theme-btn {
-    animation: 5s rotate linear infinite;
-  }
 
-  @keyframes rotate {
-    to {
-      --angle: 360deg;
+  #nav{
+    .radio-btn{
+      width: 75px;
+      height: 33px;
+      padding: 4px;
+      border-radius: 50px;
+      cursor: pointer;
+      background-color: $yellow-color;
+      overflow: hidden;    
     }
-  }
 
-  @property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
+    .radio-inner{
+      position: relative;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      transition: all $all-anim-transition;
+    }
+
+    .radio-inner::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -40%;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      transform: scale(0);
+      background-color: $yellow-color;
+      transition: all 0.3s;
+    }
+
+    .radio-btn .radio-inner.active{
+      transform: translateX(calc(70px - 30px));
+    }
+    .radio-btn .radio-inner.active::before{
+      left: -15px;
+      transform: scale(1);
+    }
   }
 
 </style>

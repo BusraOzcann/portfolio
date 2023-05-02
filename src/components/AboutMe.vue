@@ -1,15 +1,15 @@
 <template>
     <div id="aboutme" class="container py-5">
         <div class="aboutme row">
-            <div class="col-xs-12 col-sm-8 ">
+            <div class="col-xs-12 col-sm-7 ">
+                
+                <div class="activeText mb-2 animate__animated animate__fadeInRight" :key="k">
+                    <b>{{ activeText }}</b>
+                </div>
+
                 <p style="font-weight: 700;">
                     Merhaba, Siteme Hoşgeldiniz 🤗 
                 </p>
-
-                
-                <div class="activeText mb-2 animate__animated animate__fadeInLeft" :key="k">
-                    <b>{{ activeText }}</b>
-                </div>
 
                 <p style="margin-bottom: 30px">
                     Bilgisayar mühendisiyim. İnternet programlama tecrübem var ve kişisel olarak AI ile ilgileniyorum.
@@ -22,7 +22,7 @@
             </div>
 
 
-            <div class="col-xs-12 col-sm-4 d-flex justify-content-center animate__animated animate__zoomIn">
+            <div class="col-xs-12 col-sm-5 d-flex justify-content-center animate__animated animate__fadeIn">
                 <img :src="image1" alt="picture" id="aboutPicture">
             </div>
             
@@ -40,7 +40,7 @@ export default {
     name: "AboutMe",
     setup(){
         const $ = Jquery
-        const image1 = require('../assets/images/girl1.webp')
+        const image1 = require('../assets/images/resim1.png')
         var textList = ['Büşra Özcan', 'Bilgisayar Mühendisi 💻', 'Frontend Developer 🖥️']
         var activeTextIndex = 0;
         var activeText = ref(textList[activeTextIndex])
@@ -90,6 +90,9 @@ export default {
         .resume-btn button{
             background-color: #eeeeee;
             color: #5d5d5f;
+            -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+                -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+                box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
         }
 
         .activeText{
@@ -98,8 +101,11 @@ export default {
     }
     [data-theme='dark']{
         .resume-btn button{
-            background-color: #5d5d5f;
+            background-color: #898989;
             color: #eeeeee;
+            -webkit-box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
+            -moz-box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
+            box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
         }
         .activeText{
             color: $yellow-color
@@ -110,8 +116,9 @@ export default {
         padding-top: 10px;
         
         .activeText{
+            font-weight: bold;
             font-size: $active-text-size;
-            transition: color 0.5s;
+            transition: all $all-anim-transition;
         }
 
         .resume-btn{
@@ -119,9 +126,7 @@ export default {
                 width: 200px;
                 height: 50px;
                 border-radius: 50px;
-                -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
-            -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
-            box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+                transition: all $all-anim-transition;
             }
             button:active{
                 animation: movebutton 0.3s;
@@ -139,7 +144,7 @@ export default {
 
         @media screen and (min-width: 768px){
             #aboutPicture{
-                width: 400px;
+                width: 500px;
             }        
         }
         @media screen and (max-width: 768px){

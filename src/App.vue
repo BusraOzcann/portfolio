@@ -24,6 +24,7 @@ import Skills from "./components/Skills"
 
 import {ref, onMounted} from "vue"
 import { useStore } from "vuex"
+import $ from "jquery"
 
 export default {
   name: 'App',
@@ -31,6 +32,7 @@ export default {
   setup(){
     const store = useStore()
     let isScrolled = ref(false);
+    
     let handleScroll = () => {
       isScrolled.value = window.scrollY > 0;
     }
@@ -41,7 +43,10 @@ export default {
         var currentTheme = localStorage.getItem("theme")
         store.commit('changeTheme', currentTheme);
         if (currentTheme == 'light') app.setAttribute('data-theme', 'light');
-        else if (currentTheme == 'dark') app.setAttribute('data-theme', 'dark')
+        else if (currentTheme == 'dark') {
+          app.setAttribute('data-theme', 'dark');
+          $('.radio-inner').addClass("active")
+        } 
       } else {
         localStorage.setItem('theme', 'dark')
       }

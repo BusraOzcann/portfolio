@@ -12,13 +12,14 @@ body{
     font-family: 'Nunito', sans-serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
+    font-size: $text-size !important
 }
 
 #app{
     height: 100%;
     width: 100%;
-    transition: background-position 0.5s;
+    transition: all $all-anim-transition;
 }
 
 #app[data-theme='light']{

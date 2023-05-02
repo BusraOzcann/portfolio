@@ -33,12 +33,12 @@ export default {
         return {
             skills: [
                 { title: "Javascript", rate: "77%", color: "#D21312"},
-                { title: "Vue", rate: "80%", color:"#083AA9"},
-                { title: "React", rate: "70%", color: "#379237" },
+                { title: "Vue", rate: "80%", color:"#62CDFF"},
+                { title: "React", rate: "70%", color: "#82CD47" },
                 { title: "Nodejs", rate: "65", color: "#FB2576" },
                 { title: "HTML", rate: "85%", color: "#8F43EE" },
                 { title: "CSS", rate: "75%", color: "#FF8400" },
-                { title: "Unity", rate: "51%", color: "#461111" },
+                { title: "Unity", rate: "51%", color: "#FD8A8A" },
                 { title: "Python", rate: "54%", color: "#19A7CE" },
             ]
         }
