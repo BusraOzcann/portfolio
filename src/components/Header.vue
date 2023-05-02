@@ -1,5 +1,5 @@
 <template>
-    <nav id="nav" class="navbar navbar-expand-md bg-body-tertiary m-0 " style="height: 60px;">
+    <nav id="nav" class="navbar sticky-top navbar-expand-md bg-body-tertiary m-0 " style="height: 60px;">
       <div class="container-fluid" style="height: 100% !important;">
         <a class="navbar-brand" href="#">
             <!-- <img src="../assets/images/spaceship.gif" height="45" alt="" style="border-radius: 50%;"> -->
@@ -267,7 +267,7 @@ import $ from "jquery"
       padding: 4px;
       border-radius: 50px;
       cursor: pointer;
-      background-color: $yellow-color;
+      background-color: #a3d8ff;
       overflow: hidden;    
     }
 
@@ -288,7 +288,7 @@ import $ from "jquery"
       height: 100%;
       border-radius: 50%;
       transform: scale(0);
-      background-color: $yellow-color;
+      background-color: #a3d8ff;
       transition: all 0.3s;
     }
 

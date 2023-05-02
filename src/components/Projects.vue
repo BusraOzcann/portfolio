@@ -1,6 +1,8 @@
 <template>
-    <div id="projects" class="container py-5 d-flex justify-content-center align-items-center">
-        <div style="margin-top: 60px">
+    <div id="projects" class="container d-flex justify-content-center align-items-center ">
+        <div style="margin-top: 60px; width: 100%;">
+
+            <!-- GİTHUB BASLANGIC -->
             <div class="row mb-4">
                 <!-- Avatar baslangıc -->
                 <div class="col-12 col-lg-1 mb-3">
@@ -43,41 +45,32 @@
                             <div class="col mb-1">
                                 <i class="mdi mdi-office-building me-2"></i> {{ githubProfile.company }}
                             </div>
-                            <!-- <div class="col mb-1" style="cursor: pointer" @click="openNewTab('https://twitter.com/busra_ozcan_')">
-                                <v-tooltip text="Twitter Adresine Git" location="end">
-                                    <template v-slot:activator="{ props }">
-                                        <span v-bind="props"><i class="mdi mdi-twitter me-2"></i> {{ githubProfile.twitter_username }}</span>
-                                    </template>
-                                </v-tooltip>
-                            </div> -->
                         </div>
                         <!-- Sağ kısım bitiş -->
                     </div>
                 </div>
                 <!-- Avatarın sagındaki bilgi içeren kısım bitiş -->
             </div>
+            <!-- GİTHUB BİTİŞ -->
             <hr>
 
             <!-- projects section -->
 
-            <div id="vue" class="row animate__animated animate__slideInRight">
-                <div class="col-12">
-                    <h2>
-                        Vuejs Projelerim
-                    </h2>
-                </div>
+            <div id="vue" class="row animate__animated animate__slideInRight mb-5">
+                <h2 class="mb-5">
+                    Vue.js
+                </h2>
                 <div class="col-12">
                     <vue-projects/>
                 </div>
             </div>
 
+
                 
             <div id="react" class="row animate__animated animate__slideInLeft">
-                <div class="col-12">
-                    <h2>
-                        React Projelerim
-                    </h2>
-                </div>
+                <h2 class="mb-5">
+                    React
+                </h2>
                 <div class="col-12">
                     <react-projects/>
                 </div>
@@ -103,7 +96,6 @@
 
 <script>
 import { ref, onMounted, defineComponent } from "vue"
-import { marked } from 'marked';
 
 import GithubService from '@/Services/GithubService';
 import notification from "../notification"
@@ -140,9 +132,6 @@ export default defineComponent(
                     GithubService.getRepos().then((response) => {
                         githubRepos.value = response.data
                         GithubService.getARepo(response.data[1].owner.login, response.data[1].name, response.data[1].default_branch).then((res) => {
-                            // marked olarak olusturulan ve base64 formatında gönderilen readme contentini decode etme
-                            // res.data.content = marked.parse(atob(res.data.content))
-                            // repoDetay.value = res.data
                         })
                     })
                 } catch (e) {
@@ -255,6 +244,9 @@ export default defineComponent(
         //         height: 80px !important;
         //     }
         // }
+        .v-card-text{
+            min-height: 100px !important;
+        }
     }
 
     .v-avatar{

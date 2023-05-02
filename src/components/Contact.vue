@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="col-12 col-lg-6">
-                    <v-tooltip text="E-Posta Gönder" location="top">
+                    <v-tooltip text="ozcan.busra1999@gmail.com Adresine E-Posta Gönder" location="top">
                         <template v-slot:activator="{ props }">
                             <v-btn v-bind="props" class="float-end" prepend-icon="mdi-email-arrow-right" size="large" color="success" rounded="xs" @click="sendMail">
                                 Bana Mail İle Ulaş
@@ -91,8 +91,7 @@ export default {
     position: absolute;
     left: 0;
     width: 100%;
-
-    
+    transition: all $all-anim-transition;
 }
 
 .social-logo{

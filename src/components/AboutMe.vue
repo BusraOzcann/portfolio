@@ -11,8 +11,8 @@
                     Merhaba, Siteme Hoşgeldiniz 🤗 
                 </p>
 
-                <p style="margin-bottom: 30px">
-                    Bilgisayar mühendisiyim. İnternet programlama tecrübem var ve kişisel olarak AI ile ilgileniyorum.
+                <p style="margin-bottom: 30px; text-indent: 30px; line-height: 1.8; text-align: justify">
+                    2021 Mart ayında Sivas Cumhuriyet Üniversitesi Bilgisayar Mühendisliği bölümünden mezun oldum. Front-end alanında Vuejs framework'ü ile 1 yıl profesyonel tecrübem var. Vuejs framework'ü dışında React framework'ü ile de ilgileniyorum. Şu anda kendimi bu frameworkler ile daha çok geliştirmeye devam ediyorum. 
                 </p>
 
                 <div class="resume-btn col-xs-12 col-lg-6 mb-5">
@@ -22,7 +22,7 @@
             </div>
 
 
-            <div class="col-xs-12 col-sm-5 d-flex justify-content-center animate__animated animate__fadeIn">
+            <div id="aboutPictureArea" class="col-xs-12 col-sm-5 animate__animated animate__fadeIn">
                 <img :src="image1" alt="picture" id="aboutPicture">
             </div>
             
@@ -88,8 +88,8 @@ export default {
 
     [data-theme='light']{
         .resume-btn button{
-            background-color: #eeeeee;
-            color: #5d5d5f;
+            background-color: $pink-color;
+            color: $text-color-dark;
             -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
                 -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
                 box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
@@ -101,8 +101,8 @@ export default {
     }
     [data-theme='dark']{
         .resume-btn button{
-            background-color: #898989;
-            color: #eeeeee;
+            background-color: $yellow-color;
+            color: $text-color-dark;
             -webkit-box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
             -moz-box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
             box-shadow: 0px 7px 8px -4px rgba(158, 158, 158, 0.47);
@@ -125,7 +125,7 @@ export default {
             button{
                 width: 200px;
                 height: 50px;
-                border-radius: 50px;
+                border-radius: 5px;
                 transition: all $all-anim-transition;
             }
             button:active{
@@ -142,14 +142,23 @@ export default {
             }
         }
 
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 998px){
+            .aboutPictureArea{
+                display: flex;
+                justify-content: end;
+            }
             #aboutPicture{
-                width: 500px;
+                width: 400px;
             }        
         }
-        @media screen and (max-width: 768px){
+        @media screen and (max-width: 998px){
+            .aboutPictureArea{
+                display: flex;
+                justify-content: center;
+            }
             #aboutPicture{
                 width: 250px;
+                height: 350px;
             }      
             
             .resume-btn{

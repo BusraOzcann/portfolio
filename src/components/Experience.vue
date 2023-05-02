@@ -1,19 +1,21 @@
 <template>
     <div id="experience" class="container py-5" style="height: 900px; ">
         <div style="margin-top: 60px">
+
+            <hr class="mb-5">
             
              <v-timeline align="start">
                 <v-timeline-item
                     v-for="(year, i) in years"
                     :key="i"
-                    :dot-color="year.color"
+                    :dot-color="currentTheme == 'dark' ? year.darkColor : year.lightColor"
                     size="small"
                 >
                 <template v-slot:opposite>
                     <div :class="`pt-1 headline font-weight-bold`" v-text="year.year"></div>
                 </template>
                 <div>
-                    <h2 :class="`mt-n1 headline font-weight-light mb-4`">
+                    <h2 :class="`mt-n1 headline font-weight-light mb-4`" :style="{color: currentTheme == 'dark' ? year.darkColor : year.lightColor}">
                         <b>{{ year.title }}</b>
                     </h2>
                     <div>
@@ -28,16 +30,21 @@
 </template>
 
 <script>
-import {ref} from "vue"
+import {ref, computed} from "vue"
+import {useStore} from "vuex"
+
 export default {
     setup(){
+        const store = useStore();
         const years = ref([
-            { year : "2016 Eylül - 2021 Mart", color: "#fcb404", title: "Üniversite", text: "Cumhuriyet Üniversitesi Bilgisayar Mühendisliği"},
-            { year : "2021 Eylül - HALEN", color: "#fcbc36", title: "Yüksek Lisans", text: "Sivas Bilim ve Teknoloji Üniversitesi Savunma Teknolojileri A.B.D"},
-            { year: "2022 Şubat - 2022 Mart", color: "#fcc660", title: "İş Tecrübesi", text: "Sivas Teknokent Hakan Bilgi Teknolojileri" }
+            { year : "2016 Eylül - 2021 Mart", darkColor: "#fe6e30", lightColor: "#ce4f62", title: "Üniversite", text: "Cumhuriyet Üniversitesi Bilgisayar Mühendisliği"},
+            { year: "2022 Şubat - 2022 Mart", darkColor: "#fe6e30", lightColor: "#ce4f62", title: "İş Tecrübesi", text: "Sivas Teknokent Hakan Bilgi Teknolojileri" },
+            { year : "2022 Eylül - HALEN", darkColor: "#fe6e30", lightColor: "#ce4f62", title: "Yüksek Lisans", text: "Sivas Bilim ve Teknoloji Üniversitesi Savunma Teknolojileri A.B.D"},
         ])
+        const currentTheme = computed(() => store.state.theme)
+        
 
-        return {years}
+        return {years, currentTheme}
     }
 }
 </script>
