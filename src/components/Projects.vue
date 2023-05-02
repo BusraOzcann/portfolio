@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-
+            <hr class="projectLine">
                 
             <div id="react" class="row animate__animated animate__slideInLeft">
                 <h2 class="mb-5">
@@ -249,11 +249,28 @@ export default defineComponent(
         }
     }
 
+    .projectLine{
+            display: none;
+        }
+
     .v-avatar{
         cursor: pointer;
         -webkit-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
         -moz-box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
         box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.47);
+    }
+
+    @media screen and (max-width: 998px){
+        .projectArea{
+            min-height: 200px;
+            max-height: 500px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .projectLine{
+            display: block;
+        }
     }
 }
 

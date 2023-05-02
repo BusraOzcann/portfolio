@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row projectArea">
         <div class="col-4 mb-3" v-for="(item, index) in projects" :key="index">
             <v-tooltip text="GitHup Respository Adresine Git" location="top">
                 <template v-slot:activator="{ props }">
