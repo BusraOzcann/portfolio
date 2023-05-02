@@ -121,6 +121,11 @@ export default {
             transition: all $all-anim-transition;
         }
 
+        #aboutPictureArea{
+            display: flex;
+            justify-content: end;
+        }
+
         .resume-btn{
             button{
                 width: 200px;
@@ -143,27 +148,23 @@ export default {
         }
 
         @media screen and (min-width: 998px){
-            .aboutPictureArea{
-                display: flex;
-                justify-content: end;
-            }
             #aboutPicture{
                 width: 400px;
             }        
         }
         @media screen and (max-width: 998px){
-            .aboutPictureArea{
-                display: flex;
-                justify-content: center;
-            }
             #aboutPicture{
                 width: 250px;
-                height: 350px;
-            }      
-            
+                height: 300px;
+            } 
             .resume-btn{
                 display: flex;
                 justify-content: center;
+            }
+        }
+        @media screen and (max-width: 576px){
+            #aboutPictureArea{
+                display: none;
             }
         }
 
