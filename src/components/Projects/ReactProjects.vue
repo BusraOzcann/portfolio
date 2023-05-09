@@ -103,7 +103,8 @@ export default {
         const theme = computed(() => store.state.theme)
         const slidePerView = ref("")
         var projects = ref([
-            { name: "Film Site", html_url: "https://github.com/BusraOzcann/React-Film-Website", img_src: require('@/assets/images/Projects/react/film.png'), topics: ['React', 'Javascript', 'HTML', 'CSS',], description: "Themoviedb API kullanılarak oluşturulmuş internet sitesi." },
+            { name: "Film Website", html_url: "https://github.com/BusraOzcann/React-Film-Website", img_src: require('@/assets/images/Projects/react/film.png'), topics: ['React', 'Javascript', 'HTML', 'CSS',], description: "Themoviedb API kullanılarak oluşturulmuş internet sitesi." },
+            { name: "Planner", html_url: "https://github.com/BusraOzcann/planner-react", img_src: require('@/assets/images/Projects/react/planner.png'), topics: ['React', 'Javascript', 'HTML', 'CSS',], description: "İşlerimizi planlayabileceğimiz bir takvim ve iş yönetim uygulaması" },
         ])
 
         onMounted(() => {
@@ -120,7 +121,7 @@ export default {
 
             (newVal, oldVal) => {
                 // dark tema ve light tema da farklı olmasını istediğim resimler
-                projects.value[0].img_src = newVal == 'dark' ? require('@/assets/images/Projects/vue/portfolio.png') : require('@/assets/images/Projects/vue/portfolio1.png')
+                // projects.value[0].img_src = newVal == 'dark' ? require('') : require('')
             }
         )
 
